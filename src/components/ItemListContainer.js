@@ -6,8 +6,8 @@ const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
 
   const productos = [
-    { id: 0, title: "remera1", price: 450, pictureUrl: "remera1.jpg" },
-    { id: 1, title: "remera2", price: 500, pictureUrl: "remera2.jpg" },
+    { id: 0, title: "remera1", description: "remera a rayas negras", price: 450, pictureUrl: "remera1.jpg" },
+    { id: 1, title: "remera2", description: "remera con triangulos de colores" , price: 500, pictureUrl: "remera2.jpg" },
   ];
 
   useEffect(() => {
