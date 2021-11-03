@@ -7,7 +7,7 @@ const App = () =>{
         <>
             <NavBar/>
             <h1>Pagina principal</h1>
-            <ItemListContainer productos= "remeras"/>
+            <ItemListContainer/>
             <Counter stock = "4" initial =  "0"/>
         </>
     )
