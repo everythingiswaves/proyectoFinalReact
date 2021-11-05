@@ -14,15 +14,15 @@ const ItemList = ({ items }) => {
     return <p>Loading </p>;
   } else {
     return (
-      <div>
+      <>
         {items.map((e, i) => {
           return (
             <>
-                <Item id={e.id} title={e.title} price={e.price} pictureUrl={e.pictureUrl}/>
+                <Item id={e.id} title={e.title} price={e.price} pictureUrl={e.pictureUrl} stock ={e.stock}/>
             </>
           );
         })}
-      </div>
+      </>
     );
   }
 };

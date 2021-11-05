@@ -1,11 +1,15 @@
 import React from 'react'
 
-const Item = ({ id, title, price, pictureUrl }) => {
+import { NavLink } from 'react-router-dom'
+
+const Item = ({ id, title, price, pictureUrl, stock }) => {
     return (
-        <div>
-            <h2>{title}</h2>
+        <div className="productos-item">
             <img src={pictureUrl} alt={title} />
-            <p>Precio:{price}</p>
+            <h3>{title}</h3>
+            <p>Precio:$UY{price}</p>
+            <button className="botonAgregar">Agregar</button>
+            <p><NavLink to={`/item/${id}`}>Detalles</NavLink></p>
         </div>
     )
 }

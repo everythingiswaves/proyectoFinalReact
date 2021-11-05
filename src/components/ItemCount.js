@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const ItemCount = ({stock,initial}) => {
-  stock = parseInt(stock)
-  initial = parseInt(initial)
+const ItemCount = ({ stock, initial }) => {
+  stock = parseInt(stock);
+  initial = parseInt(initial);
 
   const [cantidad, setContador] = useState(initial);
 
@@ -13,20 +13,20 @@ const ItemCount = ({stock,initial}) => {
   };
 
   const restar = () => {
-    if (cantidad != 0) {
+    if (cantidad !== 0) {
       setContador(cantidad - 1);
     }
   };
 
   return (
     <div>
-      <p>El contador va : {cantidad} </p>
-      <button onClick={sumar} className="material-icons">
-        add
-      </button>
       <button onClick={restar} className="material-icons">
         remove
       </button>
+      <button onClick={sumar} className="material-icons">
+        add
+      </button>
+      <p>{cantidad} </p>
     </div>
   );
 };
