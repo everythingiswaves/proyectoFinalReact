@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
   stock = parseInt(stock);
   initial = parseInt(initial);
 
@@ -27,6 +27,7 @@ const ItemCount = ({ stock, initial }) => {
         add
       </button>
       <p>{cantidad} </p>
+      <button onClick={()=> onAdd(cantidad)}  className="botonAgregar">Agregar</button>
     </div>
   );
 };
