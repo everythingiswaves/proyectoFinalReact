@@ -16,7 +16,7 @@ const ItemDetail = ({ item }) => {
       <h1>{item.title}</h1>
       <p>{item.description}</p>
       <p>{`$UY ${item.price}`}</p>
-      <ItemCount stock={item.stock} initial="0" onAdd={onAdd} />
+      {cantidad ?null : <ItemCount stock={item.stock} initial="0" onAdd={onAdd} /> }
     </div>
   );
 };
