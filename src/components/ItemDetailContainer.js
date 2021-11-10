@@ -26,13 +26,9 @@ const ItemDetailContainer = () => {
   const {itemId} = useParams();
   console.log(Number(itemId));
   useEffect(() => {
-    
-    //por ahora siempre va a ser el id 0
     getItem(Number(itemId)).then((item) => {
       setItems(item);
-    });
-
-    getItem().catch((error) => {
+    }).catch((error) => {
       console.log(error);
     });
   }, 
