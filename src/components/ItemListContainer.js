@@ -14,7 +14,6 @@ const productos = [
 ];
   const [products, setProducts] = useState([]);
   const { categoryId } = useParams();
-  console.log(categoryId);
 
   useEffect(() => {
     const pedirProductos = new Promise((resolve, reject) => {
