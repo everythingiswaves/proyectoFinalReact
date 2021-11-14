@@ -8,7 +8,6 @@ const Item = ({ id, title, price, pictureUrl, stock }) => {
             <img src={pictureUrl} alt={title} />
             <h3>{title}</h3>
             <p>Precio:$UY{price}</p>
-            <button className="botonAgregar">Agregar</button>
             <p><NavLink to={`/item/${id}`}>Detalles</NavLink></p>
         </div>
     )

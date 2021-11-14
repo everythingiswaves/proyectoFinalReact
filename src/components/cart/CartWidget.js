@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../CartContext";
+import { CartContext } from '../../CartContext';
 import { useContext } from "react";
 
 export const CartWidget = () => {
@@ -8,9 +8,8 @@ export const CartWidget = () => {
   const {cart} = useContext(CartContext);
   return (
     <div>
-      <p><Link to="/cart">Carrito</Link></p>
-      <p>{cart.length}</p>
-      <button className="material-icons">shopping_cart</button>
+      <button className="material-icons"><Link to="/cart">shopping_cart</Link></button>
+      <p>{cart.reduce((a,c) => a + c.cantidad, 0)}</p>
     </div>
   );
 };
