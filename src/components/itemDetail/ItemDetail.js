@@ -16,8 +16,8 @@ const ItemDetail = ({ item }) => {
   }
   return (
     <div className="productos-item">
-      <img src={item.pictureUrl} alt={item.title} />
-      <h1>{item.title}</h1>
+      <img src={item.pictureUrl} alt={item.name} />
+      <h1>{item.name}</h1>
       <p>{item.description}</p>
       <p>{`$UY ${item.price}`}</p>
       {cantidad ? <button><Link to="/cart">Terminar compra</Link></button> : <ItemCount stock={item.stock} initial="1" onAdd={onAdd} /> }

@@ -2,38 +2,46 @@ import React from "react";
 import { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import { firestore } from "../../firebase";
 
-const productos = [
-  { id: 0, name: "remera1", description: "remera a rayas negras", price: 450, pictureUrl: "/media/circulosnegra.jpeg", stock: 10, categoria: 1 },
-  { id: 1, name: "remera2", description: "remera con triangulos de colores" , price: 500, pictureUrl: "/media/cuadradoscolores.jpeg", stock: 4, categoria: 1 },
-  { id: 2, name: "remera3", description: "remera con rayas de colores" , price: 550, pictureUrl: "/media/cuadradosrayas.jpeg", stock: 6, categoria: 1 },
-  { id: 3, name: "Campera1", description: "Campera con rayas de colores" , price: 600, pictureUrl: "/media/camperarayas.jpeg", stock: 8, categoria: 2 },
-  { id: 4, name: "Campera2", description: "Campera con triangulos de colores" , price: 650, pictureUrl: "/media/camperatriangulos.jpeg", stock: 10,  categoria: 2 },
-  { id: 5, name: "Pantalon", description: "Pantalon con rayas de colores" , price: 300, pictureUrl: "/media/pantalon.jpeg", stock: 12, categoria: 3 },
-];
-
-const getItem = (id) => {
-  const promesa = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(productos[id]);
-    }, 2000);
-  });
-  return promesa;
-};
+const productos2 = [];
 
 const ItemDetailContainer = () => {
   const [items, setItems] = useState({});
-  const {itemId} = useParams();
-  
+  const { id } = useParams();
+
   useEffect(() => {
-    getItem(Number(itemId)).then((item) => {
-      setItems(item);
-    }).catch((error) => {
-      console.log(error);
+
+    /* const promesa = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(productos_iniciales.find(p => p.id == id));
+        }, 2000);
     });
-  }, 
-  [itemId]
-  );
+    promesa.then(producto => setProducto(producto));
+    promesa.then(producto => setProducto(producto)); */
+    const db = firestore
+
+    //2) Necesito una coleccion
+    const collection = db.collection("productos")
+
+    //3) Hago la consulta
+    //const promesa = collection.get()
+    const query = collection.doc(id)
+
+    //4) Obtengo resultados
+    const promesa = query.get()
+
+    promesa
+        .then((documento)=>{
+            console.log("Consulta exitosa")
+            const data = documento.data()
+            setItems(data)
+        })
+        .catch(()=>{
+            console.log("Hubo un error")
+        })
+
+}, [id]);
 
   return <ItemDetail item={items} />;
 };
