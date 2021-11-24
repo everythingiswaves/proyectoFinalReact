@@ -6,23 +6,24 @@ import { firestore } from "../../firebase";
 
 const ItemListContainer = () => {
   const productos = [];
+
   const [products, setProducts] = useState([]);
-  const { category } = useParams();
+  const { categoryId } = useParams();
 
   useEffect(() => {
     const db = firestore
-    const collection = db.collection("productos");
-    const promesa = collection.get()
-    let query = collection.where("category", "==", category);
-    const consulta = query.get()
+    const collection = db.collection("items");
+    const query = collection.where("categoryId", "==", categoryId);
+    const promesa = query.get();
 
-    consulta.then(resultado => {
+
+    promesa.then(resultado => {
       setProducts(resultado.docs.map(doc=>({...doc.data(),id:doc.id})))
     })
     .catch(error => {
         console.log(error)
     })
-  }, [category]);
+  }, [categoryId]);
 
   return (
     <div id="divProductos">
