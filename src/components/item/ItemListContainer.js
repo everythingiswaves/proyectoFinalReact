@@ -10,8 +10,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     const db = firestore;
     const collection = db.collection("items");
-    
-    
+
     let promesa;
     if (categoryId) {
       const queryCategory = collection.where("categoryId", "==", categoryId);

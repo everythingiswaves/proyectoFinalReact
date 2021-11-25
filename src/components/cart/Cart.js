@@ -2,9 +2,40 @@ import React from 'react'
 import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase';
+import {firestore} from '../../firebase';
 
 export const Cart = () => {
     const {removeFromCart, cart, clearCart} = useContext(CartContext);
+    const endPurchase = () => {
+        alert("Compra realizada con exito");
+        const user= {
+            name: "Robo",
+            email: "Cop",
+            phone: "01001010",
+        }
+        const item = {
+            id: 3,
+            title: "T-shirt",
+            price: 200,
+        }
+        const order={
+            user: user,
+            item:item,
+            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            total: 600
+        }   
+        const db = firestore
+        const collection = db.collection('orders')
+        const query = collection.add(order)
+
+        clearCart();
+
+        query.then(resultado => {
+            console.log(resultado)
+        })
+    }
+
     if(cart.length > 0) {
         return (
             <div className="cart">
@@ -25,6 +56,7 @@ export const Cart = () => {
                 <div> 
                     <p>Total: ${cart.reduce((a,c) => a + c.producto.price * c.cantidad, 0)}</p>
                     <button onClick={clearCart}>Clear Cart</button>
+                    <button onClick={endPurchase}>Terminar compra</button>
                 </div>
             </div>
         )
