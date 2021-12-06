@@ -18,7 +18,7 @@ const ItemList = ({ items }) => {
         {items.map((e, i) => {
           return (
             <>
-                <Item key= {e.id} id={e.id} title={e.title} price={e.price} pictureUrl={e.pictureUrl} stock ={e.stock}/>
+                <Item key= {e.id} id={e.id} name={e.name} price={e.price} pictureUrl={e.pictureUrl} stock ={e.stock}/>
             </>
           );
         })}

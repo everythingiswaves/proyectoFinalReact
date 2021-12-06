@@ -13,12 +13,14 @@ export const CartProvider = ({children}) => {
     console.log(cart);
     const addToCart = (producto, cantidad) => {
         const nuevoCart = [...cart];//copio el cart
+        console.log(nuevoCart);
         if(isInCart(producto)){
             const productoEnCart = cart.find(item => item.producto.id === producto.id)
             productoEnCart.cantidad = cantidad;//quiero que actualize el numero en vez de sumarlo
         }else{
             nuevoCart.push({producto, cantidad})//le agrego lo nuevo
             setCart(nuevoCart)
+            
         }
         
         

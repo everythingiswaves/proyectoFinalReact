@@ -7,6 +7,7 @@ import { firestore } from "../../firebase";
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { categoryId } = useParams();
+
   useEffect(() => {
     const db = firestore;
     const collection = db.collection("items");
@@ -29,6 +30,7 @@ const ItemListContainer = () => {
         console.log(error);
       });
   }, [categoryId]);
+  console.log(products)
 
   return (
     <div id="divProductos">

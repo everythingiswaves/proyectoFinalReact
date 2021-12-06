@@ -16,12 +16,14 @@ const ItemDetailContainer = () => {
 
     promesa
         .then((querySnaptshot) => {
-            setItems(querySnaptshot.data())
+            let item = querySnaptshot.data();
+            item.id = querySnaptshot.id;
+            setItems(item);
             })
         .catch(()=>{
             console.log("Hubo un error")
         })
-
+        //console.log(items);
 });
 
   return <ItemDetail item={items} />;

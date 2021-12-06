@@ -15,15 +15,13 @@ export const Cart = () => {
             phone: "01001010",
         }
         const item = {
-            id: 3,
-            title: "T-shirt",
-            price: 200,
+            
         }
         const order={
             user: user,
             item:item,
             date: firebase.firestore.Timestamp.fromDate(new Date()),
-            total: 600
+            total: cart.reduce((a,c) => a + c.producto.price * c.cantidad, 0)
         }   
         const db = firestore
         const collection = db.collection('orders')
@@ -42,6 +40,7 @@ export const Cart = () => {
                 <h2>Cart</h2>
                 <div className="cart-items">
                     {cart.map(item => (
+
                         <div key={item.producto.id}>
                             {/* <img src={item.producto.image} alt={item.producto.name} /> */}
                             <div>
