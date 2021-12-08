@@ -23,7 +23,6 @@ const ItemDetailContainer = () => {
         .catch(()=>{
             console.log("Hubo un error")
         })
-        //console.log(items);
 });
 
   return <ItemDetail item={items} />;

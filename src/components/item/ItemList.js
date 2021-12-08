@@ -1,14 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Item from "./Item.js"
+import Item from "./Item.js";
 
 const ItemList = ({ items }) => {
   const [item, setItem] = useState([items]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setItem(items);
-    }, 3000);
+    setItem(items);
   }, []);
   if (items.length === 0) {
     return <p>Loading </p>;
@@ -18,7 +16,14 @@ const ItemList = ({ items }) => {
         {items.map((e, i) => {
           return (
             <>
-                <Item key= {e.id} id={e.id} name={e.name} price={e.price} pictureUrl={e.pictureUrl} stock ={e.stock}/>
+              <Item
+                key={e.id}
+                id={e.id}
+                name={e.name}
+                price={e.price}
+                pictureUrl={e.pictureUrl}
+                stock={e.stock}
+              />
             </>
           );
         })}

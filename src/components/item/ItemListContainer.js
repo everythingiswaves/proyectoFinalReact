@@ -30,7 +30,6 @@ const ItemListContainer = () => {
         console.log(error);
       });
   }, [categoryId]);
-  console.log(products)
 
   return (
     <div id="divProductos">
