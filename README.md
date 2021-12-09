@@ -3,6 +3,7 @@
 
 Este es un proyecto creado en el marco del curso de ReactJS de Coderhouse. El mismo es un e-commerce de venta de remeras y otros artículos de vestimenta con distintos diseños originales. Este sitio es la entrega final del curso donde se evalúan todos los conocimeintos adquiridos. 
 En el sitio el usuario podrá seleccionar los productos que desea comprar, tenerlos en un carrito y editar el mismo y ver los totales de su compra. Al momento de finalizar la compra, la informaación de la orden será almacenada en una base de datos enla nube. 
+Si el usuario desea cambiar la cantidad elegida de un producto deberá volver al detalle del producto y elegir la cantidad que desea de nuevo.
 
 ## Uso e instalación
 Pasos a seguir para poder importar el sitio y utilizarlo
