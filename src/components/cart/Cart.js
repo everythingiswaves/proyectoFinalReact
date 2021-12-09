@@ -9,8 +9,6 @@ export const Cart = () => {
   const { removeFromCart, cart, clearCart } = useContext(CartContext);
 
   const endPurchase = () => {
-    alert("Compra realizada con exito");
-
     const user = {
       name: "User1",
       phone: 5555555,
@@ -34,7 +32,7 @@ export const Cart = () => {
 
     const db = firestore;
     const collection = db.collection("orders");
-    const query = collection.add(order);
+    collection.add(order);
 
     clearCart();
   };
