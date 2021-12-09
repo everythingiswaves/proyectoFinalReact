@@ -20,15 +20,21 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
   return (
     <div>
-      <button onClick={restar} className="material-icons">
-        remove
-      </button>
-      <button onClick={sumar} className="material-icons">
-        add
-      </button>
-      <p>{cantidad} </p>
-      <button onClick={() => onAdd(cantidad)} className="botonAgregar">
-        Agregar
+      <div id="itemCountDiv">
+        <div>
+          <button onClick={restar} className="material-icons">
+            remove
+          </button>
+          <button onClick={sumar} className="material-icons">
+            add
+          </button>
+        </div>
+        <div>
+          <h3>{cantidad}</h3>
+        </div>
+      </div>
+      <button onClick={() => onAdd(cantidad)} className="botonAgregar"><h3>
+        Comprar</h3>
       </button>
     </div>
   );

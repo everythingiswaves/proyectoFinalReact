@@ -7,11 +7,13 @@ const NavBar = () =>{
     const {cart} = useContext(CartContext);
     return(
         <nav>
-            <h2>EIW</h2>
-            <p><Link to="/">Inicio</Link></p>
-            <p><NavLink to="/category/1">Remeras</NavLink></p>
-            <p><NavLink to="/category/2">Camperas</NavLink></p>
-            <p><NavLink to="/category/3">Pantalones</NavLink></p>
+            <span className="tituloNav">
+                <Link to="/"><img src="/media/icono.png" /></Link>
+                <NavLink to="/" style={{ textDecoration: 'none' }}><h1 className="titulo">Everything Is Waves</h1></NavLink>
+            </span>
+            <h3 className="link"><NavLink to="/category/1" style={{ textDecoration: 'none' }}>Triangulos</NavLink></h3>
+            <h3 className="link"><NavLink to="/category/2" style={{ textDecoration: 'none' }}>Circulos</NavLink></h3>
+            <h3 className="link"><NavLink to="/category/3" style={{ textDecoration: 'none' }}>Otros</NavLink></h3>
             { cart.length ? <CartWidget/> : null}
         </nav>
     )

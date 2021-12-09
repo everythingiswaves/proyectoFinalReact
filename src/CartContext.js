@@ -9,15 +9,15 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (producto, cantidad) => {
-    const nuevoCart = [...cart]; 
-    console.log("algo")
+    const nuevoCart = [...cart];
+
     if (isInCart(producto)) {
       const productoEnCart = cart.find(
         (item) => item.producto.id === producto.id
       );
       productoEnCart.cantidad = cantidad;
     } else {
-      nuevoCart.push({ producto, cantidad }); 
+      nuevoCart.push({ producto, cantidad });
     }
     setCart(nuevoCart);
   };

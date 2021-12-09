@@ -6,11 +6,11 @@ import { useContext } from "react";
 export const CartWidget = () => {
   const { cart } = useContext(CartContext);
   return (
-    <div>
-      <button className="material-icons">
+    <div className="cartWidget">
+      <button className="material-icons link">
         <Link to="/cart">shopping_cart</Link>
       </button>
-      <p>{cart.reduce((a, c) => a + c.cantidad, 0)}</p>
+      <h3>{cart.reduce((a, c) => a + c.cantidad, 0)}</h3>
     </div>
   );
 };

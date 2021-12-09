@@ -8,14 +8,13 @@ import { firestore } from "../../firebase";
 export const Cart = () => {
   const { removeFromCart, cart, clearCart } = useContext(CartContext);
 
-  const endPurchase = (event) => {
-    event.preventDefault();
+  const endPurchase = () => {
     alert("Compra realizada con exito");
 
     const user = {
-      name: event.target[0].value,
-      phone: event.target[1].value,
-      email: event.target[2].value,
+      name: "User1",
+      phone: 5555555,
+      email: "algo@gmail.com",
     };
 
     let item = cart.map((item) => {
@@ -42,45 +41,41 @@ export const Cart = () => {
 
   if (cart.length > 0) {
     return (
-      <div className="cart">
-        <h2>Cart</h2>
+      <div id="cart">
+        <h2>Compras</h2>
         <div className="cart-items">
           {cart.map((item) => (
-            <div key={item.producto.id}>
-              <div>
-                <h3>{item.producto.name}</h3>
-                <p>{item.producto.price}</p>
-                <p> {item.cantidad}</p>
-                <button onClick={() => removeFromCart(item)}>Remove</button>
-              </div>
+            <div className="cart-item-detail" key={item.producto.id}>
+              <h3>{item.producto.name}</h3>
+              <h3>${item.producto.price}</h3>
+              <h3> {item.cantidad}</h3>
+              <h3> {item.producto.price * item.cantidad}</h3>
+              <button
+                onClick={() => removeFromCart(item)}
+                className="botonCarrito"
+              >
+                Eliminar producto
+              </button>
             </div>
           ))}
-          <p>
+          <h2>
             Total: $
             {cart.reduce((a, c) => a + c.producto.price * c.cantidad, 0)}
-          </p>
+          </h2>
         </div>
-
-        <div>
-          <button onClick={clearCart}>Clear Cart</button>
-          <div>
-            <form id="cartForm" onSubmit={endPurchase}>
-              <input type="text" placeholder="name" required/>
-              <input type="text" placeholder="phone" required/>
-              <input type="email" placeholder="email" required/>
-              <input type="submit" value="Terminar compra"></input>
-            </form>
-          </div>
-        </div>
+        <button onClick={clearCart} className="botonCarrito">
+          Vaciar Carrito
+        </button>
+        <button type="submit" onClick={endPurchase} className="botonCarrito">
+          Finalizar compra
+        </button>
       </div>
     );
   } else {
     return (
-      <div className="cart">
-        <h3>No hay productos en el carrito</h3>
-        <h3>
-          <Link to="/">Ir a comprar</Link>
-        </h3>
+      <div id="cart" style={{textAlign:"center"}}>
+        <h2>No hay productos en el carrito</h2>
+          <Link to="/" style={{ textDecoration: 'none' }}><button className="botonCarrito">Ir a comprar</button></Link>
       </div>
     );
   }
